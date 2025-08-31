@@ -51,7 +51,6 @@ class _WelcomePageState extends State<WelcomePage> {
               CustomPaint(
                 size: Size(MediaQuery.of(context).size.width,
                     250), // height of the curve
-                painter: TopCurvePainter(),
               ),
             ],
           ),
@@ -59,28 +58,4 @@ class _WelcomePageState extends State<WelcomePage> {
       ),
     );
   }
-}
-
-class TopCurvePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()..color = Colors.lightBlueAccent;
-
-    Path path = Path();
-    path.lineTo(0, size.height * 0.6);
-
-    // Create a curve (like in the UI you shared)
-    path.quadraticBezierTo(
-      size.width * 0.5, size.height, // control point
-      size.width, size.height * 0.6, // end point
-    );
-
-    path.lineTo(size.width, 0);
-    path.close();
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
